@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" th:replace="~{base :: parent(~{::.test},~{::title})}">
+<head>
+    <title>About page</title>
+</head>
+<body>
+    
+    <div class="test bg-black">
+        <h1>This is my about page</h1>
+        <p th:text="'Date: '+ ${date}"></p>
+        <p>Lorem ipsum dolor sit amet.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en"
+th:replace="~{base :: parent(~{::#content}, ~{::title})}"
+xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title >Add Contact</title>
+</head>
+<body>
+   <div id="content">
+<div th:if="${loggedInUser}">
+  <div th:replace="~{user/sidebar :: sidebar}"></div>
+</div>
+    
+   <!-- This is the main content area -->
+<main class="ml-0 sm:ml-64 p-6 bg-gray-100 dark:bg-gray-900  min-h-screen">
+  <div class="max-w-2xl mx-auto bg-white dark:bg-gray-800 p-6 rounded shadow ">
+
+    <div data-th-replace="message::messagebox"></div>
+
+    <h1 class="text-2xl font-bold mb-4 text-gray-900 dark:text-white">Add Contact</h1>
+<p class="text-gray-500 " >This contact will be stored on cloud, you can direct email this client from scm...</p>
+    <form 
+    th:action="@{/user/contacts/add}" 
+    th:object="${contactform}"
+    enctype="multipart/form-data"
+    method="post" class="space-y-4 mt-5">
+  <div>
+
+    <!-- Contact Name -->
+  <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Contact Name</label>
+  <div class="relative mt-1">
+    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 dark:text-gray-300">
+      <i class="w-4 h-4 fa-solid fa-user"></i>
+    </span>
+    <input 
+    data-th-field="*{name}"
+    type="text" name="name"
+    id="name"
+      class="pl-10 block w-full border border-gray-300 dark:border-gray-600 rounded p-2 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="name" />
+  </div>
+  <!-- For printing error -->
+  <p class="text-red-500"
+  
+  data-th-if="${#fields.hasErrors('name')}"
+  data-th-errors="*{name}"
+  >Invalid name</p>
+</div>
+<!-- Contact Email -->
+      <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Contact Email</label>
+          <div class="relative mt-1">
+    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 dark:text-gray-300">
+      <i class="w-4 h-4 fa-solid fa-envelope"></i>
+    </span>
+        <input
+        data-th-field="*{email}"
+        type="email" name="email" placeholder="example@gmail.com"
+               class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" />
+      </div>
+      <p class="text-red-500"
+  data-th-if="${#fields.hasErrors('email')}"
+  data-th-errors="*{email}"
+  >Invalid name</p>
+</div>
+<!-- Phone Number -->
+      <div class="md-3">
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300">Phone</label>
+        <div class="relative mt-1">
+    <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 dark:text-gray-300">
+      <i class="w-4 h-4 fa-solid fa-phone"></i>
+    </span>
+        <input
+        data-th-field="*{phoneNumber}"
+        type="text" name="phone"
+               class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white" placeholder="78547445745" />
+      </div>
+      <p class="text-red-500"
+  
+  data-th-if="${#fields.hasErrors('phoneNumber')}"
+  data-th-errors="*{phoneNumber}"
+  >Invalid name</p>
+    </div>
+    
+<div>
+  <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact address</label>
+<textarea
+data-th-field="*{address}" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Address of the contact..."></textarea>
+<p class="text-red-500"
+  
+  data-th-if="${#fields.hasErrors('address')}"
+  data-th-errors="*{address}"
+  >Invalid name</p>
+</div>
+<!-- Contact Description -->
+<div>
+  <label for="message" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Contact Description</label>
+<textarea
+data-th-field="*{description}" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Write about your contact..."></textarea>
+</div>
+<!-- Website Link -->
+ 
+<div class="flex space-x-3">
+  <!-- Website Link -->
+  <div class="w-full">
+    <div class="relative mt-1">
+      <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 dark:text-gray-300">
+        <i class="w-4 h-4 fa-solid fa-earth-americas"></i>
+      </span>
+      <input 
+        type="text"
+        data-th-field="*{websiteLink}"
+        name="websiteLink"
+        id="websiteLink"
+        class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+        placeholder="https://example.com"
+        aria-label="Website URL" />
+    </div>
+  </div>
+
+  <!-- LinkedIn Link -->
+  <div class="w-full">
+    <div class="relative mt-1">
+      <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500 dark:text-gray-300">
+        <i class="w-4 h-4 fa-brands fa-linkedin"></i>
+      </span>
+      <input
+        type="text"
+        data-th-field="*{linkedInLink}"
+        name="linkedin"
+        id="linkedin"
+        class="mt-1 block w-full border border-gray-300 dark:border-gray-600 rounded pl-10 bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+        placeholder="https://linkedin.com/in/example"
+        aria-label="LinkedIn URL" />
+    </div>
+  </div>
+</div>
+
+<!-- Upload File -->
+<div class="md-3">
+<label for="file_input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" >Upload file</label>
+<input 
+id="image_file_input"
+class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" 
+data-th-field="*{profileImage}" type="file">
+<img  class="max-h-52 mx-auto rounded-lg shadow" id="Upload_image_preview" alt=""/>
+</div>
+
+<div class="flex items-center mb-4">
+    <input id="default-checkbox"
+    data-th-field="*{favourite}"
+    type="checkbox"  class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded-sm focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+    <label for="default-checkbox" class="ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Is this is your favourite contact?</label>
+</div>
+<!-- Submit Button -->
+<div class="button container text-center">
+<button type="submit"
+style="background-color: black"
+  class="bg-black  dark:bg-black text-white px-3 py-2 rounded">
+  Add Contact
+</button>
+   <button type="reset" style="background-color: black"
+    class="bg-black   text-white px-3 py-2 rounded transition">
+    Reset
+  </button>
+</div>
+    </form>
+  </div>
+</main>
+<script data-th-src="@{'/js/admin.js'}"></script>
+<script>console.log("Havascr")</script>
+  </body>
+</html>
