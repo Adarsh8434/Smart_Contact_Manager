@@ -67,11 +67,6 @@ public class User implements UserDetails {
       Collection<SimpleGrantedAuthority> roles=roleList.stream().map(role-> new SimpleGrantedAuthority(role)).collect(Collectors.toList());
       return roles;
    }
-   // @Override
-   // public String getname() {
-   //   return this.name;
-   // }
-
    @Override
    public String getUsername() {
      return this.email;
@@ -97,10 +92,5 @@ public class User implements UserDetails {
    @Override
    public boolean isCredentialsNonExpired() {
        return true; // Assuming the credentials are not expired
-   }
-
-   public User orElseThrow(Object object) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'orElseThrow'");
    }
 }

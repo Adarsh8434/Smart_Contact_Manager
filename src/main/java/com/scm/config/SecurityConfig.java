@@ -71,7 +71,7 @@ public class SecurityConfig {
     httpSecurity.formLogin(form ->{
     form.loginPage("/login");
      form.loginProcessingUrl("/authenticate");
-     form.successForwardUrl("/user/profile");
+     form.successForwardUrl("/user/dashboard");
      form.failureForwardUrl("/login?error=true");
      form.usernameParameter("email");
      form.passwordParameter("password");
