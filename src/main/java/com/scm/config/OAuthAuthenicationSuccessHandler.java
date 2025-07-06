@@ -11,8 +11,11 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.security.oauth2.core.user.DefaultOAuth2User;
 import org.springframework.security.web.DefaultRedirectStrategy;
+import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.ObjectIdGenerators.StringIdGenerator;
 import com.scm.entities.Providers;
 // import com.scm.entities.User;
 import com.scm.entities.User;
@@ -61,10 +64,9 @@ if(authorizedClientRegistrationId.equalsIgnoreCase("google")){
     user1.setProfilePic(oauthUser.getAttribute("picture").toString());
     user1.setProviderUserId(oauthUser.getName());
     user1.setProvider(Providers.GOOGLE);
-    user1.setPassword("dummy"); 
-    logger.info("Name from Google: " + oauthUser.getAttribute("name"));
-    user1.setName(oauthUser.getAttribute("name"));
-    user1.setAbout("This account is created using google");
+    user1.setPassword("dummy");
+    user1.setName("Google");
+    user1.setAbout("This account is crested using google");
 
 }else if(authorizedClientRegistrationId.equalsIgnoreCase("github")){
 
@@ -72,7 +74,7 @@ if(authorizedClientRegistrationId.equalsIgnoreCase("google")){
 
 // String picture=oauthUser.getAttribute("avatar_url").toString();
 // String name=oauthUser.getAttribute("login").toString();
-String email = oauthUser.getAttribute("email") != null ? oauthUser.getAttribute("email").toString() : oauthUser.getAttribute("login").toString() + "@github.com";
+String email = oauthUser.getAttribute("email") != null ? oauthUser.getAttribute("email").toString() : oauthUser.getAttribute("login").toString() + "@gmail.com";
 String picture = oauthUser.getAttribute("avatar_url") != null ? oauthUser.getAttribute("avatar_url").toString() : "";
 String name = oauthUser.getAttribute("login") != null ? oauthUser.getAttribute("login").toString() : "Unknown";
 String providerUserId=oauthUser.getName();
@@ -80,11 +82,11 @@ String providerUserId=oauthUser.getName();
 
 user1.setEmail(email);
 user1.setProfilePic(picture);
-user1.setName( name);
-user1.setProviderUserId( providerUserId);
+user1.setName(name);
+user1.setProviderUserId(providerUserId);
 user1.setProvider(Providers.GITHUB);
 user1.setPassword("dummy");
-user1.setAbout("This account is created using github");
+user1.setAbout("This account is crested using github");
 
 }else{
     logger.info("OAuthAuthenticationSuccessHandler: Unknown provider");
