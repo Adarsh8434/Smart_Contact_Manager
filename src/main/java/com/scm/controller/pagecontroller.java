@@ -55,8 +55,13 @@ public class pagecontroller {
    @RequestMapping("/contact")
    public String contactPage(){
      System.out.println("Contact page is loaded");
-     return "contact";
+     return new String ("contact");
    }
+
+    //  @GetMapping("/login")
+    // public String login() {
+    //     return new String("login");
+    // }
 
   //  This is registration controller
    @GetMapping("/login")
@@ -66,6 +71,7 @@ public class pagecontroller {
     System.out.println("Login page is loaded");
        return "login";
    }
+   
    @GetMapping("/register")
    public String RegisterPage(Model model) {
     System.out.println("Registration page loaded");

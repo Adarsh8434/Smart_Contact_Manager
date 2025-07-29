@@ -17,7 +17,6 @@ import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.ObjectIdGenerators.StringIdGenerator;
 import com.scm.entities.Providers;
-// import com.scm.entities.User;
 import com.scm.entities.User;
 import com.scm.helpers.AppConstants;
 import com.scm.repository.UserRepo;
@@ -33,6 +32,7 @@ public class OAuthAuthenicationSuccessHandler implements AuthenticationSuccessHa
     @Autowired
 private  UserRepo userRepo;
     Logger logger=LoggerFactory.getLogger(OAuthAuthenicationSuccessHandler.class);
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
             Authentication authentication) throws IOException, ServletException {
@@ -56,6 +56,7 @@ oauthUser.getAttributes().forEach((key,value)->{
     user1.setRoleList(List.of(AppConstants.ROLE_USER));
     user1.setEnabled(true);
     user1.setEmailVerified(true);
+    user1.setPassword("dummy");
 
 
 
@@ -64,8 +65,6 @@ if(authorizedClientRegistrationId.equalsIgnoreCase("google")){
     user1.setProfilePic(oauthUser.getAttribute("picture").toString());
     user1.setProviderUserId(oauthUser.getName());
     user1.setProvider(Providers.GOOGLE);
-    user1.setPassword("dummy");
-    user1.setName("Google");
     user1.setAbout("This account is crested using google");
 
 }else if(authorizedClientRegistrationId.equalsIgnoreCase("github")){
@@ -85,7 +84,7 @@ user1.setProfilePic(picture);
 user1.setName(name);
 user1.setProviderUserId(providerUserId);
 user1.setProvider(Providers.GITHUB);
-user1.setPassword("dummy");
+// user1.setPassword("dummy");
 user1.setAbout("This account is crested using github");
 
 }else{

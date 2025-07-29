@@ -25,10 +25,13 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity(name="user")
 @Table(name="users")
 @Data
+@Getter
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -49,8 +52,8 @@ public class User implements UserDetails {
 
 //    Information
 @Getter(value=AccessLevel.NONE)
-   private boolean enabled=true;
-   private boolean emailVerified=true;
+   private boolean enabled=false;
+   private boolean emailVerified=false;
    private boolean phoneVerified=false;
 
    @Enumerated(value = EnumType.STRING)

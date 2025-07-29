@@ -62,7 +62,7 @@ public class SecurityConfig {
     // url configure kiya hai ki kaun se public rahenge kaun se nahi
     httpSecurity.authorizeHttpRequests(authorize -> {
       // authorize.requestMatchers("/home","/register","/services").permitAll();
-      authorize.requestMatchers("/user/dashboard").hasRole("USER");
+      authorize.requestMatchers("/user/**").authenticated();
       authorize.anyRequest().permitAll();
     });
 

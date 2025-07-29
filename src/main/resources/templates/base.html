@@ -15,7 +15,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous"referrerpolicy="no-referrer" />
 </head>
 <body class="dark:bg-gray-900 bg-gray-100 dark:text-white">
-  <div th:replace="~{navbar ::navbar}"></div>
+  <div th:if="${loggedInUser}">
+     <div th:replace="user/user_navbar :: user-navbar"></div>
+  </div>
+ <div th:unless="${loggedInUser}">
+   <div th:replace="navbar::navbar"></div>
+ </div>
 
  <div class="pt-20 m-4">
   <section th:replace="${content}"></section>
