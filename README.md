@@ -67,7 +67,7 @@ SmartContactManager/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Java 17
+- Java 21
 - MySQL Server
 - Maven
 - IDE (Vscode)
