@@ -67,7 +67,7 @@ SmartContactManager/
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Java 17 or 21
+- Java 17
 - MySQL Server
 - Maven
 - IDE (Vscode)
@@ -88,8 +88,8 @@ properties
 Copy
 Edit
 spring.datasource.url=jdbc:mysql://localhost:3306/smart_contact_manager
-spring.datasource.username=root
-spring.datasource.password=student
+spring.datasource.username= your_username
+spring.datasource.password= your_password
 Run the Application
 
 bash
@@ -100,15 +100,6 @@ Access the Application
 
 Open your browser and go to: http://localhost:8081
 
-👤 Admin Credentials (Demo)
-You can register as a new user or use the preloaded admin account if seeded:
-
-Username: admin@example.com
-
-Password: admin123
-
-
-
 🧑‍💻 Author
 Adarsh Kumar Choubey
 🔗[ LinkedIn](https://www.linkedin.com/in/adarshku/)
@@ -116,7 +107,4 @@ Adarsh Kumar Choubey
 
 🌟 Support
 If you like this project, please ⭐ the repo to support the work!
-
-📝 License
-This project is licensed under the MIT License - see the LICENSE file for details.
 
