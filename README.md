@@ -84,27 +84,24 @@ Create a database named smart_contact_manager in MySQL
 
 Update the credentials in application.properties:
 
-properties
-Copy
-Edit
-spring.datasource.url=jdbc:mysql://localhost:3306/smart_contact_manager
--spring.datasource.username= your_username
--spring.datasource.password= your_password
--Run the Application
+- spring.datasource.url=jdbc:mysql://localhost:3306/smart_contact_manager
+- spring.datasource.username= your_username
+- spring.datasource.password= your_password
+- Run the Application
 
 bash
 Copy
 Edit
--mvn spring-boot:run
+- mvn spring-boot:run
 Access the Application
 
 Open your browser and go to: http://localhost:8081
 
 🧑‍💻 Author
--Adarsh Kumar Choubey
--🔗[ LinkedIn](https://www.linkedin.com/in/adarshku/)
--📧 rohitadarsh02@gmail.com
+- Adarsh Kumar Choubey
+- 🔗[ LinkedIn](https://www.linkedin.com/in/adarshku/)
+- 📧 rohitadarsh02@gmail.com
 
 🌟 Support
--If you like this project, please ⭐ the repo to support the work!
+- If you like this project, please ⭐ the repo to support the work!
 
